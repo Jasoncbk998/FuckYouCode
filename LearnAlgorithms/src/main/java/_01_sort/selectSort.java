@@ -2,7 +2,7 @@ package _01_sort;
 
 import javafx.scene.web.WebEngine;
 
-public class selectSort extends Sort {
+public class selectSort<E extends Comparable<E>> extends Sort<E> {
 
     @Override
     protected void sort() {

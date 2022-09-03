@@ -1,8 +1,6 @@
 package _01_sort;
 
-import tools.Asserts;
 import tools.Integers;
-import tools.Times;
 
 import java.util.Arrays;
 
@@ -13,8 +11,10 @@ public class main {
         Integer[] array = Integers.random(count, 1, max);
         testSorts(array, new Sort[]{
                 new bubbleSort3(),
-                new bubbleSort2(),
-                new bubbleSort1(),
+//                new bubbleSort2(),
+//                new bubbleSort1(),
+                new insertSort2(),
+                new insertSort1(),
                 new selectSort(),
                 new heapSort()
         });

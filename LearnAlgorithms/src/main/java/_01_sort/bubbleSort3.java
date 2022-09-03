@@ -1,19 +1,6 @@
 package _01_sort;
 
-import tools.Integers;
-import tools.Times;
-
-public class bubbleSort3 extends Sort {
-    public static void main(String[] args) {
-        Integer[] array1 = Integers.random(10000, 1, 100000);
-        Integer[] array_asc_1 = Integers.ascOrder(100, 5000);
-        Integer[] array2 = Integers.copy(array1);
-        Integer[] array_asc_2 = Integers.copy(array_asc_1);
-
-        Integers.println(array1);
-
-        Integers.println(array1);
-    }
+public class bubbleSort3<E extends Comparable<E>>  extends Sort<E> {
 
 
     public static void bubbleSort3(Integer[] array) {

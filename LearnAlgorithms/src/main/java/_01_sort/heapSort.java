@@ -1,6 +1,6 @@
 package _01_sort;
 
-public class heapSort extends Sort {
+public class heapSort<E extends Comparable<E>> extends Sort<E> {
     private int heapSize;
 
 
@@ -17,10 +17,7 @@ public class heapSort extends Sort {
             swap(0, --heapSize);
             // 对0位置进行siftDown 恢复堆的性质
             siftDown(0);
-
         }
-
-
     }
 
     /**
@@ -29,23 +26,23 @@ public class heapSort extends Sort {
      * @param index
      */
     private void siftDown(int index) {
-        Integer element = array[index];
+        E element = array[index];
 
         int half = heapSize >> 1;
         while (index < half) { // index必须是非叶子节点
             // 默认是左边跟父节点比
             int childIndex = (index << 1) + 1;
-            Integer child = array[childIndex];
+            E child = array[childIndex];
 
             int rightIndex = childIndex + 1;
             // 右子节点比左子节点大
             if (rightIndex < heapSize &&
-                    cmpElemetns(array[rightIndex], child) > 0) {
+                    cmp(array[rightIndex], child) > 0) {
                 child = array[childIndex = rightIndex];
             }
 
             // 大于等于子节点
-            if (cmpElemetns(element, child) >= 0) break;
+            if (cmp(element, child) >= 0) break;
 
             array[index] = child;
             index = childIndex;
