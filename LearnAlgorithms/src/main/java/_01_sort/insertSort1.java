@@ -5,6 +5,8 @@ package _01_sort;
  */
 public class insertSort1<E extends Comparable<E>> extends Sort<E> {
     /**
+     *
+     * 比较法
      * 逆序对
      * 2,3,8,6,1
      * 逆序对: 2,1  3,1   8,1   8,6   6,1 共5个
@@ -12,6 +14,8 @@ public class insertSort1<E extends Comparable<E>> extends Sort<E> {
      * 最坏是n的平方
      * 最好是n
      * 越小到大 性能越好
+     *
+     * 比较
      */
     @Override
     protected void sort() {

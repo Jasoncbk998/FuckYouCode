@@ -6,15 +6,18 @@ import java.util.Arrays;
 
 public class main {
     public static void main(String[] args) {
-        int count = 500;
+        int count = 10000;
         int max = 2 * count;
         Integer[] array = Integers.random(count, 1, max);
         testSorts(array, new Sort[]{
-                new bubbleSort3(),
+                new quickSort(),
+//                new bubbleSort3(),
 //                new bubbleSort2(),
 //                new bubbleSort1(),
-                new insertSort2(),
-                new insertSort1(),
+//                new insertSort2(),
+                new insertSort3(),
+                new mergeSort(),
+//                new insertSort1(),
                 new selectSort(),
                 new heapSort()
         });
