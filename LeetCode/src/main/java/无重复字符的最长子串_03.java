@@ -10,6 +10,22 @@ public class 无重复字符的最长子串_03 {
      * 最核心的思想就是寻找每个字符结尾的子串的最长不重复子串
      */
     public static int lengthOfLongestSubstring(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int max = 0, start = 0;
+        // 找end结尾最长的无重复子串的长度
+        for (int end = 0; end < s.length(); end++) {
+            char ch = s.charAt(end);
+            if (map.containsKey(ch)) {
+                start = Math.max(map.get(ch) + 1, start);
+            }
+            max = Math.max(max, end - start + 1);
+            // put每个字符的位置
+            map.put(ch, end);
+        }
+        return max;
+    }
+
+    public static int lengthOfLongestSubstring2(String s) {
         if (s == null) return 0;
         char[] chars = s.toCharArray();
         if (chars.length == 0) return 0;
@@ -41,7 +57,7 @@ public class 无重复字符的最长子串_03 {
 
 
     public static void main(String[] args) {
-        String s = "abbbaa";
+        String s = "abccba";
         int i = lengthOfLongestSubstring(s);
         System.out.println(i);
     }

@@ -11,7 +11,7 @@ public class _01 {
         HashMap<Integer, Integer> maps = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (maps.containsKey(target - nums[i])) {
-                return new int[]{i, maps.get(target - nums[i])};
+                return new int[]{maps.get(target - nums[i]), i};
             }
             maps.put(nums[i], i);
         }

@@ -14,14 +14,15 @@ public class 两数相加_02 {
         // 不断向临时节点.next中追加节点
         ListNode temp = node;
         int carry = 0, newVal = 0;
+        // 任意一个条件符合就要进入循环
         while (p1 != null || p2 != null || carry > 0) {
             newVal = (p1 == null ? 0 : p1.val) + (p2 == null ? 0 : p2.val) + carry;
             // 进位,得到十位数
             carry = newVal / 10;
             // 取余,18%10=8 得到个位数
             newVal = newVal % 10;
-            // 像临时节点
             temp.next = new ListNode(newVal);
+            // 链表.next
             p1 = (p1 == null) ? null : p1.next;
             p2 = (p2 == null) ? null : p2.next;
             //添加节点
