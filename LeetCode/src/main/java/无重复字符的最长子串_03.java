@@ -6,8 +6,9 @@ public class 无重复字符的最长子串_03 {
      * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
      * 核心思路
-     * 一个字符串无重复字符的子串
-     * 最核心的思想就是寻找每个字符结尾的子串的最长不重复子串
+     * 依次遍历字符串,每次拿到新的字符,就去map中寻找是否出现过
+     *  如果在遍历的字符在a位置出现了重复,那么无重复子串就要从a+1位置开始,end - start+1
+     *  如果map中不存在key,则说明无重复,继续遍历
      */
     public static int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
@@ -16,6 +17,7 @@ public class 无重复字符的最长子串_03 {
         for (int end = 0; end < s.length(); end++) {
             char ch = s.charAt(end);
             if (map.containsKey(ch)) {
+                // 发现在a位置重复,则就要从a+1位置开始从新计数
                 start = Math.max(map.get(ch) + 1, start);
             }
             max = Math.max(max, end - start + 1);
@@ -24,38 +26,6 @@ public class 无重复字符的最长子串_03 {
         }
         return max;
     }
-
-    public static int lengthOfLongestSubstring2(String s) {
-        if (s == null) return 0;
-        char[] chars = s.toCharArray();
-        if (chars.length == 0) return 0;
-
-        // 用来保存每一个字符上一次出现的位置
-        int[] prevIdxes = new int[128];
-//        给所有字符默认的上一次位置都是-1
-        for (int i = 0; i < prevIdxes.length; i++) {
-            prevIdxes[i] = -1;
-        }
-        // 第一个元素上一次的位置是0
-        prevIdxes[chars[0]] = 0;
-        // 以i - 1位置字符结尾的最长不重复字符串的开始索引（最左索引）
-        int li = 0;
-        int max = 1; // 我们认为一个字符串无重复子串的最坏情况就是1 就是一堆字符都是相同字符,那么无重复子串就是1
-        for (int i = 1; i < chars.length; i++) {
-            // i位置字符上一次出现的位置
-            int pi = prevIdxes[chars[i]];
-            if (li <= pi) {
-                li = pi + 1;
-            }
-            // 存储这个字符出现的位置
-            prevIdxes[chars[i]] = i;
-            // 求出最长不重复子串的长度
-            max = Math.max(max, i - li + 1);
-        }
-        return max;
-    }
-
-
     public static void main(String[] args) {
         String s = "abccba";
         int i = lengthOfLongestSubstring(s);
