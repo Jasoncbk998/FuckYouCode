@@ -1,4 +1,4 @@
-import sun.plugin.WJcovUtil;
+import com.sun.org.apache.bcel.internal.generic.SWAP;
 
 public class _31 {
     /**
@@ -36,6 +36,15 @@ public class _31 {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+
+    public static void main(String[] args) {
+        int[] ints = {1, 2, 4, 9, 8, 7, 6, 1};
+        nextPermutation(ints);
+        for (int i = 0; i < ints.length; i++) {
+            System.out.print(ints[i] + "\t");
+        }
     }
 
 }

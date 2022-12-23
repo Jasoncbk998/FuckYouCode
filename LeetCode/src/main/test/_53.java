@@ -4,13 +4,12 @@ public class _53 {
         int sum = 0;
         for (int num : nums) {
             if (sum > 0) {
-                sum += num;
-            } else {
-                sum = num;
+                sum+=num;
+            }else {
+                sum=num;
             }
-            ans = Math.max(ans, sum);
+            ans=Math.max(ans,sum);
         }
         return ans;
-
     }
 }

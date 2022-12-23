@@ -13,6 +13,7 @@
         <module>JUCLearn</module>
         <module>LearnFlink</module>
         <module>LearnAlgorithms</module>
+        <module>LearnJiKe</module>
     </modules>
 
     <properties>
