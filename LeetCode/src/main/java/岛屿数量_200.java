@@ -24,6 +24,8 @@ public class 岛屿数量_200 {
         int col = grid[0].length;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
+                // 如果是岛屿,则进行+1.
+                // 并且进行传染扩散
                 if (grid[i][j] == '1') {
                     result++;
                     dfs(grid, i, j, row, col);
@@ -34,10 +36,13 @@ public class 岛屿数量_200 {
     }
 
     private static void dfs(char[][] grid, int x, int y, int row, int col) {
+        // 扩散边界条件
         if (x < 0 || y < 0 || x >= row || y >= col || grid[x][y] == '0') {
             return;
         }
+        // 设置该位置岛屿为0
         grid[x][y] = '0';
+        // 进行传染扩散,上下左右
         dfs(grid, x - 1, y, row, col);
         dfs(grid, x + 1, y, row, col);
         dfs(grid, x, y + 1, row, col);

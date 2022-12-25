@@ -6,6 +6,7 @@ public class 爬楼梯_70 {
      * 1. 1 阶 + 1 阶 + 1 阶
      * 2. 1 阶 + 2 阶
      * 3. 2 阶 + 1 阶
+     *      f(x)=f(x−1)+f(x−2)
      */
     public int climbStairs(int n) {
         int[] dp = new int[n + 2];

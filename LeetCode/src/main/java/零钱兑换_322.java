@@ -19,7 +19,6 @@ public class 零钱兑换_322 {
      * F(3) =  2 // F(3)=min(F(3-1),F(3-2),F(3-5))+1 = min(F(2),F(1))+1=min(1,1)+1=2
      */
     public int coinChange(int[] coins, int amount) {
-        int max = amount + 1;
         int[] dp = new int[amount + 1];
         dp[0] = 0;
         //coins = [1, 2, 5], amount = 11
