@@ -1,3 +1,7 @@
+import java.security.Key;
+import java.util.HashMap;
+import java.util.Map;
+
 public class tools {
     public static String printArray(int[] arr) {
         StringBuilder sb = new StringBuilder();
@@ -6,4 +10,7 @@ public class tools {
         }
         return sb.toString();
     }
+
+
+
 }

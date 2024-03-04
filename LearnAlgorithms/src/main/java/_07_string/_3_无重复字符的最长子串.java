@@ -1,7 +1,5 @@
 package _07_string;
 
-import sun.tools.jconsole.MemoryPoolStat;
-
 import java.util.HashMap;
 import java.util.Map;
 

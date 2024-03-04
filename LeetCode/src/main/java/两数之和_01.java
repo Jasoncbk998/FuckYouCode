@@ -24,4 +24,27 @@ public class 两数之和_01 {
         }
         return null;
     }
+
+
+    public int[] twoSum_1(int[] nums, int target) {
+        HashMap<Integer, Integer> maps = new HashMap<>();
+        for (int i = 0; i <nums.length; i++) {
+//            9-2=7
+            if (maps.containsKey(target-nums[i])){
+                return new int[]{i,maps.get(target-nums[i])};
+            }
+            maps.put(nums[i],i);
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        两数之和_01 test = new 两数之和_01();
+        int[] nums= {2,7,11,15,232323,54545,423,223,556,778,    99,11       ,22,33,44,55,66,77,88,998,7878,7567,5656,45656,88888888};
+
+        int[] ints = test.twoSum_1(nums, 110);
+        for (int i=0;i<ints.length;i++){
+            System.out.println(nums[ints[i]]);
+        }
+    }
 }
