@@ -26,6 +26,8 @@ FROM
             ) t1
     ) t2
 
+
+
 根据时间,进行sum
  SUM(flag) over(order by tt) AS curr_online_cnt,得出同时在线的峰值数量
 张伟    2021-06-14 12:12:12     1       1
