@@ -15,7 +15,7 @@
 
 
 -- 解
-打散后出现AB和BA的情况,使用case when 现在比较一下就始终把小的字母放前面就行了,统一顺序
+-- 打散后出现AB和BA的情况,使用case when 现在比较一下就始终把小的字母放前面就行了,统一顺序
 SELECT
     COUNT(*) AS cnt
 FROM

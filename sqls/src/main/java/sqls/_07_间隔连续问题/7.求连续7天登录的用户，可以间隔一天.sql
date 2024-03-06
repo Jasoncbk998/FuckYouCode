@@ -27,7 +27,7 @@
 
 
 
-
+-- group_id=0的数据是连续登录
 +------+-----------+-----------------+
 | uid  | group_id  | login_date_cnt  |
 +------+-----------+-----------------+
@@ -49,7 +49,8 @@ FROM
                 SELECT
                     uid,
                     dt,
---                     group_id 用于判断是否连续登录，如果diff_date>2则不是连续登录
+--                     group_id 用于判断是否连续登录，如果diff_date>2则不是连续登录,连续登录的标志是0
+--                     把所有连续登录的日期进行区分
                     sum(if(diff_date > 2,1,0)) over(partition by uid order by dt desc) AS group_id
                 FROM
                     (
@@ -57,14 +58,15 @@ FROM
                             uid,
                             dt,
                             lad_dt,
-                            datediff(dt, lad_d
-                                t) AS diff_date
+                            datediff(dt, lad_dt) AS diff_date
                         FROM
                             (
                                 SELECT
                                     uid,
                                     dt,
-                                    -- 上一次登录的时间，找不到默认日期 1970-01-01
+                                    -- 取上一次登录的时间，找不到默认日期 1970-01-01
+                                    -- lag(dt,1,'1970-01-01')over(partition by uid order by dt)as lad_dt
+                                    -- lag 按照uid取上一条数据,如果取不到赋值'1970-01-01
                                     lag(dt,1,'1970-01-01')over(partition by uid order by dt)as lad_dt
                                 FROM liuxu_test.log_table_info
                             ) t1
@@ -73,6 +75,7 @@ FROM
         GROUP BY uid, group_id
     ) t4
 WHERE login_date_cnt >= 7
+and group_id=0 -- 此为连续登录
 
 ;
 
