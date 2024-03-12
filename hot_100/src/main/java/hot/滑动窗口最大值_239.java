@@ -22,6 +22,7 @@ public class 滑动窗口最大值_239 {
      * @return
      */
     // 这种写法,是正确的,但是太垃圾了,大批量数据跑不动
+//    正确的做法是使用队列,进行计算,但是看不懂
     public int[] maxSlidingWindow(int[] nums, int k) {
         ArrayList<Integer> result_list = new ArrayList<Integer>();
         int start = 0;
