@@ -37,18 +37,21 @@ public class 滑动窗口最大值_239 {
             result_list.add(max);
             start += 1;
         }
-        int[] result_array = new int[result_list.size()];
-        for (int i = 0; i < result_list.size(); i++) {
-            result_array[i] = result_list.get(i);
-        }
-        return result_array;
+        int[] intArray = result_list.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        return intArray;
     }
 
     public static void main(String[] args) {
         滑动窗口最大值_239 test = new 滑动窗口最大值_239();
         int[] ints={1,3,-1,-3,5,3,6,7};
         int p=3;
-        test.maxSlidingWindow(ints,p);
+        int[] ints1 = test.maxSlidingWindow(ints, p);
+        for (int a : ints1) {
+            System.out.println(a);
+        }
 
     }
 }

@@ -28,7 +28,7 @@ public class 字母异位词分组_49 {
     public static void main(String[] args) {
         字母异位词分组_49 test = new 字母异位词分组_49();
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
-
+ 
 
 
     }
