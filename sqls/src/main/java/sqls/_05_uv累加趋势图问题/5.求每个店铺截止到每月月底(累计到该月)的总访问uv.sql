@@ -6,27 +6,24 @@
 -- user_id  bigint,
 -- visitstamp  string
 
--- 方法1
--- 开窗
--- 这个很少用,不错的想法
---  size(collect_set(user_id) over(partition by shop_id order by visit_month))
-
-SELECT
-    shop_id,
-    size(collect_set(user_id) over(partition by shop_id order by visit_month))
-FROM
-    (
-    SELECT
-    shop_id,
-    user_id,
-    substring(visitstamp,0,7) AS visit_month
-    FROM liuxu_test.visitlog
-    ) t1
-;
-
+shop_id product_name   user_id  visit_month
+1001    product_a      1010     2021-06
+1001    product_b      1111     2021-06
+1001    product_c      1212     2021-07
+1001    product_a      1313     2021-07
+1001    product_d      1010     2021-08
+2001    product_a      1515     2021-06
+2001    product_b      1616     2021-06
+2001    product_c      1717     2021-07
+2001    product_d      1313     2021-08
+2001    product_e      1212     2021-09
+3001    product_f      1818     2021-06
+3001    product_a      1515     2021-06
+3001    product_b      1111     2021-07
+3001    product_a      1212     2021-08
+3001    product_b      1313     2021-09
 
 
--- 方法2
 WITH visit_log1 AS (
     SELECT
         shop_id,

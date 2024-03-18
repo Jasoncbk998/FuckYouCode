@@ -31,3 +31,20 @@ FROM
     WHERE t1.month >= t2.month
     ) t3
 GROUP BY userid, month
+
+
+
+-- 方法二
+select
+    userid,
+    month,
+    sum(pvs) over (partition by userid order by month asc ) as sums
+from (
+    select
+        userid,
+        month,
+        sum(pv) as pvs
+    from liuxu_test.userlog
+    group by userid,month
+)a
+
