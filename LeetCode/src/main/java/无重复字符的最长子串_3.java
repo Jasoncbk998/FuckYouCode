@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class 无重复字符的最长子串_03 {
+public class 无重复字符的最长子串_3 {
     /**
      * 输入: s = "abcabcbb"
      * 输出: 3

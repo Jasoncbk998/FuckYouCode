@@ -34,10 +34,26 @@ public class 最大子数组和_53 {
         return max;
     }
 
+
+    public int maxSubArray_1(int[] nums) {
+        int sum = 0;
+        int ans = nums[0];
+        for (int num : nums) {
+            if (sum > 0) {
+                sum += num;
+            } else {
+                sum = num;
+            }
+            ans = Math.max(sum, ans);
+        }
+        return ans;
+    }
+
+
     public static void main(String[] args) {
         最大子数组和_53 test = new 最大子数组和_53();
         int[] ints = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        int ints1 = test.maxSubArray(ints);
+        int ints1 = test.maxSubArray_1(ints);
         System.out.println(ints1);
 
     }

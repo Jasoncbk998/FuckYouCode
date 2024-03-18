@@ -50,7 +50,7 @@ FROM
                     uid,
                     dt,
 --                     group_id 用于判断是否连续登录，如果diff_date>2则不是连续登录,连续登录的标志是0
---                     把所有连续登录的日期进行区分
+--                     把所有连续登录的日期进行区分,如果日期差大于2天就不是连续天数
                     sum(if(diff_date > 2,1,0)) over(partition by uid order by dt desc) AS group_id
                 FROM
                     (
@@ -58,7 +58,7 @@ FROM
                             uid,
                             dt,
                             lad_dt,
-                            datediff(dt, lad_dt) AS diff_date
+                            datediff(dt, lad_dt) AS diff_date  -- 日期差
                         FROM
                             (
                                 SELECT
